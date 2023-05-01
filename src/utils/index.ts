@@ -10,7 +10,7 @@ const tagsParse = (strTags: string) => {
   return tags;
 };
 
-const Ingredients = (data: GetMealDTO) => {
+const ingredientsData = (data: GetMealDTO) => {
   const meal = data!.meals[0] as GetMealDTO["meals"][0];
   const ingredients: string[] = [];
 
@@ -26,7 +26,7 @@ const Ingredients = (data: GetMealDTO) => {
   return ingredients;
 };
 
-const Measures = (data: GetMealDTO) => {
+const measuresData = (data: GetMealDTO) => {
   const meal = data!.meals[0] as GetMealDTO["meals"][0];
   const measures: string[] = [];
 
@@ -46,4 +46,4 @@ const getYouTubeVideoId = (link: string): string | null =>{
   return match ? match[1] : null;
 }
 
-export {tagsParse, Ingredients, Measures, getYouTubeVideoId}; 
+export {tagsParse, ingredientsData, measuresData, getYouTubeVideoId}; 

@@ -59,3 +59,18 @@ export interface GetMealDTO {
     strMeasure20: string;
   }[];
 }
+
+export interface MealCardProps {
+  idMeal: number;
+  strMeal: string;
+  strCategory: string;
+  strMealThumb: string;
+  strTags: string;
+}
+
+export interface MealInfoProps {
+  meal: GetMealDTO["meals"];
+  tags: string[];
+  ingredients: string[];
+  measures: string[];
+}
