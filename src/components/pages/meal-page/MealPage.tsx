@@ -18,7 +18,13 @@ import * as styles from "./MealPage.styles";
 import Header from "@/components/common/header/Header";
 import Footer from "@/components/common/footer/Footer";
 import Video from "@/components/common/video/Video";
-import { Ingredients, Measures, getYouTubeVideoId, tagsParse } from "@/utils";
+import {
+  ingredientsData,
+  measuresData,
+  getYouTubeVideoId,
+  tagsParse,
+} from "@/utils";
+import MealInfo from "@/components/common/meal-info/MealInfo";
 
 const MealPage = () => {
   const router = useRouter();
@@ -36,51 +42,23 @@ const MealPage = () => {
 
   if (isError) return <Typography>ERROR!</Typography>;
 
-  const meal = data!.meals[0] as GetMealDTO["meals"][0];
+  const meal = data!.meals[0];
 
-  let tags: string[] = tagsParse(meal.strTags);
-  const ingredients: string[] = Ingredients(data!);
-  const measures: string[] = Measures(data!);
+  const tags = tagsParse(meal.strTags);
+  const ingredients = ingredientsData(data!);
+  const measures = measuresData(data!);
 
   return (
     <Box>
       <Header />
       <Grid container sx={styles.textWrapper}>
         <Grid item xs={12} md={6}>
-          <Paper sx={styles.paperWrapper}>
-            <Typography variant="h4" gutterBottom>
-              {meal.strMeal}
-            </Typography>
-            <Grid container spacing={1}>
-              {tags.map((tag) => (
-                <Grid key={tag} item>
-                  <Chip key={tag} label={tag} />
-                </Grid>
-              ))}
-            </Grid>
-            <Typography variant="h6" gutterBottom>
-              Category: {meal.strCategory}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              {meal.strInstructions}
-            </Typography>
-            <Typography variant="h6" gutterBottom>
-              Recipe:
-            </Typography>
-            <List sx={styles.list}>
-              {ingredients.map((ingredient, index) => (
-                <ListItem key={index}>
-                  <ListItemText
-                    primary={`${ingredient} - ${measures[index]}`}
-                  />
-                </ListItem>
-              ))}
-            </List>
-            <Typography variant="h5">
-              Also you can watch a video on how to make it:
-            </Typography>
-            <Video videoId={getYouTubeVideoId(meal.strYoutube)!} />
-          </Paper>
+          <MealInfo
+            meal={data!.meals}
+            tags={tags}
+            ingredients={ingredients}
+            measures={measures}
+          />
         </Grid>
         <Grid item xs={12} md={6} sx={styles.photoWrapper}>
           <Box

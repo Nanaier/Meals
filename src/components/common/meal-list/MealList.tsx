@@ -11,11 +11,7 @@ const MealList = (props: { data: GetAllMealsDTO["meals"] }) => {
       {props.data.map((meal) => (
         <Grid key={meal.idMeal} item xs={12} sm={6} md={3}>
           <MealCard
-            idMeal={meal.idMeal}
-            strMeal={meal.strMeal}
-            strCategory={meal.strCategory}
-            strMealThumb={meal.strMealThumb}
-            strTags={meal.strTags}
+            {...meal}
           />
         </Grid>
       ))}

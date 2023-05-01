@@ -6,14 +6,8 @@ export const mainWrapper: SxProps<Theme> = {
 };
 
 export const textWrapper: SxProps<Theme> = {
-  mt: "2rem",
-  mb: "2rem",
-  mr: "5rem",
-  ml: "5rem",
-  pt: "1rem",
-  pb: "1rem",
-  pr: "2rem",
-  pl: "2rem",
+  m: "2rem 5rem",
+  p: "1rem 2rem",
   textAlign: "justify",
   backgroundColor: "#E3FDFD",
   borderRadius: "2px",
@@ -24,4 +18,15 @@ export const textWrapper: SxProps<Theme> = {
 
 export const mainText: SxProps<Theme> = {
   textAlign: "center",
+};
+
+export const dataWrapper: SxProps<Theme> = {
+  padding: "2rem",
+};
+
+export const paginationWrapper: SxProps<Theme> = {
+  display: "flex",
+  justifyContent: "center",
+  pt: "1rem",
+  pb: "4rem",
 };

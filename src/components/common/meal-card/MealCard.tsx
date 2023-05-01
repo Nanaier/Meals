@@ -14,14 +14,7 @@ import Link from "next/link";
 
 import * as styles from "./MealCard.styles";
 import { tagsParse } from "@/utils";
-
-interface MealCardProps {
-  idMeal: number;
-  strMeal: string;
-  strCategory: string;
-  strMealThumb: string;
-  strTags: string;
-}
+import { MealCardProps } from "@/types/service";
 
 const MealCard: FC<MealCardProps> = ({
   idMeal,
@@ -30,7 +23,7 @@ const MealCard: FC<MealCardProps> = ({
   strMealThumb,
   strTags,
 }) => {
-  let tags: string[] = tagsParse(strTags);
+  const tags: string[] = tagsParse(strTags);
   return (
     <Card sx={styles.card}>
       <CardContent sx={styles.wrapper}>
@@ -50,7 +43,7 @@ const MealCard: FC<MealCardProps> = ({
           </Grid>
           <Box sx={styles.textWrapper}>
             <Typography variant="body2">Category: {strCategory}</Typography>
-            <Typography sx={{ fontWeight: "bold" }}>{strMeal}</Typography>
+            <Typography sx={styles.mealName}>{strMeal}</Typography>
           </Box>
         </Box>
       </CardContent>
