@@ -28,8 +28,8 @@ const MainPage = () => {
 
   if (isError) return <Typography>ERROR!</Typography>;
 
-  return (
-    data && (
+  if (data) {
+    return (
       <Box sx={styles.mainWrapper}>
         <Header />
         <Box sx={styles.textWrapper}>
@@ -72,8 +72,11 @@ const MainPage = () => {
         </Box>
         <Footer />
       </Box>
-    )
-  );
+    );
+  }
+  else{
+    return <Typography>ERROR!</Typography>;
+  }
 };
 
 export default MainPage;
